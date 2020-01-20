@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>To-do list</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            input {
+                width: 75%;
+            }
+            #list {
+                font-size: 20px;
+            }
+            li {
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>To-do list</h1>
+        <div id="inputArea">
+            <input type="text" id="Input" placeholder="Add something...">
+            <button onclick="addItem()" class="Button">Add</button>
+        </div>
+        <ul id="list">
+            <li>Sleep    </li>
+        </ul>
+
+        <script>
+            //create a 'close' button to click when a task has been done
+            var list = document.getElementsByTagName("li");
+            var i;
+            for (i = 0; i < list.length; i++) {
+                var closeButton = document.createElement("button");
+                var t = document.createTextNode("\u00D7");
+                closeButton.className = "close";
+                closeButton.appendChild(t);
+                list[i].appendChild(closeButton);
+                //closeButton.onclick = list[i].remove(); why doesn't this work?            
+            }
+            var close = document.getElementsByClassName("close");
+            for (i = 0; i < close.length; i++) {
+                close[i].onclick = function() {
+                    this.parentElement.style.display = "none";
+                }
+            }
+
+            function addItem() {
+                var inputValue = document.getElementById("Input").value;
+                var t = document.createTextNode(inputValue.concat("\t"));
+                var li = document.createElement("li");
+                li.appendChild(t);
+                if (inputValue === '') {
+                    alert('You must write something.');
+                } else {
+                    document.getElementById("list").appendChild(li);
+                }
+                document.getElementById("Input").value = '';
+                //add a 'close' button
+                var closeButton = document.createElement("button");
+                var t = document.createTextNode("\u00D7");
+                closeButton.className = "close";
+                closeButton.appendChild(t);
+                list[i].appendChild(closeButton);
+                for (i = 0; i < close.length; i++) {
+                    close[i].onclick = function() {
+                        this.parentElement.style.display = "none";
+                    }
+                }
+            }
+        </script>
+    </body>
