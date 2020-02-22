@@ -3,6 +3,7 @@
     <head>
         <title>To-do list</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
         <style>
             input {
                 width: 75%;
@@ -17,16 +18,21 @@
 
     <body>
         <h1>To-do list</h1>
+
         <div id="inputArea">
             <input type="text" id="Input" placeholder="Add something...">
             <button onclick="addItem()" class="Button">Add</button>
         </div>
+
         <ul id="list">
             <li>Sleep    </li>
+            <li>Work    </li>
+            <li>Read books    </li>
+            <li>Code    </li>
         </ul>
 
         <script>
-            //create a 'close' button to click when a task has been done
+            //add a 'close' next to each example item
             var list = document.getElementsByTagName("li");
             var i;
             for (i = 0; i < list.length; i++) {
@@ -35,12 +41,12 @@
                 closeButton.className = "close";
                 closeButton.appendChild(t);
                 list[i].appendChild(closeButton);
-                //closeButton.onclick = list[i].remove(); why doesn't this work as the code in lines 42-47 does?            
             }
+
             var close = document.getElementsByClassName("close");
             for (i = 0; i < close.length; i++) {
                 close[i].onclick = function() {
-                    this.parentElement.style.display = "none";
+                    this.parentElement.style.display = 'none';
                 }
             }
 
@@ -49,23 +55,29 @@
                 var t = document.createTextNode(inputValue.concat("\t"));
                 var li = document.createElement("li");
                 li.appendChild(t);
+
                 if (inputValue === '') {
                     alert('You must write something.');
                 } else {
                     document.getElementById("list").appendChild(li);
                 }
+
                 document.getElementById("Input").value = '';
-                //add a 'close' button
+
+                //add a 'close' button next to the new item
                 var closeButton = document.createElement("button");
                 var t = document.createTextNode("\u00D7");
                 closeButton.className = "close";
                 closeButton.appendChild(t);
                 list[i].appendChild(closeButton);
+
                 for (i = 0; i < close.length; i++) {
                     close[i].onclick = function() {
-                        this.parentElement.style.display = "none";
+                        this.parentElement.style.display = 'none'; // why doesn't line 77 work as this?
+                        //this.parentElement.remove();
                     }
                 }
             }
         </script>
     </body>
+</html>
