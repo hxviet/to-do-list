@@ -47,6 +47,7 @@
             for (i = 0; i < close.length; i++) {
                 close[i].onclick = function() {
                     this.parentElement.style.display = 'none';
+                    //this.parentElement.remove();
                 }
             }
 
@@ -73,7 +74,7 @@
 
                 for (i = 0; i < close.length; i++) {
                     close[i].onclick = function() {
-                        this.parentElement.style.display = 'none'; // why doesn't line 77 work as this?
+                        this.parentElement.style.display = 'none'; //why doesn't the next line work?
                         //this.parentElement.remove();
                     }
                 }
